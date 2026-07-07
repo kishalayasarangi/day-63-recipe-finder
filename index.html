@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="app-title">🍳 Recipe Finder</h1>
+    <p class="subtitle">Search 1000+ recipes by name or ingredient · Day 63 of 120</p>
+
+    <!-- SEARCH -->
+    <div class="search-card">
+      <div class="search-row">
+        <input type="text" id="searchInput"
+               placeholder="Search recipes e.g. Chicken, Pasta..."
+               onkeydown="if(event.key==='Enter') searchRecipes()"/>
+        <button class="btn-search" onclick="searchRecipes()">🔍 Search</button>
+        <button class="btn-random" onclick="getRandomRecipe()">🎲 Random</button>
+      </div>
+      <div class="search-tabs">
+        <button class="stab active" onclick="setSearchType('name', this)">By Name</button>
+        <button class="stab" onclick="setSearchType('ingredient', this)">By Ingredient</button>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="categories-wrap" id="categoriesWrap"></div>
+
+    <!-- RESULTS -->
+    <div class="results-section" id="resultsSection" style="display:none">
+      <div class="results-header">
+        <h3 id="resultsTitle">Results</h3>
+        <span id="resultsCount" style="color:#606070;font-size:0.82rem;"></span>
+      </div>
+      <div class="recipes-grid" id="recipesGrid"></div>
+    </div>
+
+    <!-- FAVOURITES -->
+    <div class="favs-section" id="favsSection">
+      <div class="favs-header">
+        <h3>❤️ Saved Recipes</h3>
+        <button onclick="clearFavs()">Clear All</button>
+      </div>
+      <div class="recipes-grid" id="favsGrid"></div>
+    </div>
+
+  </div>
+
+  <!-- RECIPE MODAL -->
+  <div class="modal-overlay hidden" id="recipeModal"
+       onclick="if(event.target===this) closeModal()">
+    <div class="recipe-modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer>Day 63 of 120 · Kishalaya Sarangi · NIT Rourkela</footer>
+  <script src="script.js"></script>
+</body>
+</html>
